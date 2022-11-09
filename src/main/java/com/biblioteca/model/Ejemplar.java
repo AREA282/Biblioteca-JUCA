@@ -2,6 +2,8 @@ package com.biblioteca.model;
 
 import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -29,12 +31,18 @@ public class Ejemplar implements Serializable{
     private int codigo;
     @Column(name="edicion")
     private String edicion;
-    @ManyToOne
-    @JoinColumn(name="codigo_isbn", nullable=false)
+    @ManyToOne(cascade = CascadeType.PERSIST, optional = false)//Si borro un ejemplar, no borra el libro con el cascade
+    @JoinColumn(name = "codigo_isbn_libro")
     private Libro libro;
 
-    @ManyToMany(mappedBy = "ejemplares")
-    private List<Prestamo> prestamos;
+
+	public Libro getLibro() {
+		return libro;
+	}
+
+	public void setLibro(Libro libro) {
+		this.libro = libro;
+	}
 
 	public int getCodigo_ejemplar() {
 		return codigo;
@@ -52,21 +60,7 @@ public class Ejemplar implements Serializable{
 		this.edicion = edicion;
 	}
 
-	public Libro getLibro() {
-		return libro;
-	}
 
-	public void setLibro(Libro libro) {
-		this.libro = libro;
-	}
-
-	public List<Prestamo> getPrestamos() {
-		return prestamos;
-	}
-
-	public void setPrestamos(List<Prestamo> prestamos) {
-		this.prestamos = prestamos;
-	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

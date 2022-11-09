@@ -39,8 +39,7 @@ public class Libro implements Serializable {
     private int editorial;
     @Column(name="formato")
     private int formato;
-    @OneToMany(mappedBy = "codigo_ejemplar")
-    private Set<Ejemplar> ejemplares;
+
 
 
     @JoinTable(name = "libro_autor",
@@ -97,16 +96,6 @@ public class Libro implements Serializable {
 
 	public void setFormato(int formato) {
 		this.formato = formato;
-	}
-
-
-	public Set<Ejemplar> getEjemplares() {
-		return ejemplares;
-	}
-
-
-	public void setEjemplares(Set<Ejemplar> ejemplares) {
-		this.ejemplares = ejemplares;
 	}
 
 

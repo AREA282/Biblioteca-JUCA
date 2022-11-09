@@ -41,13 +41,10 @@ public class Prestamo implements Serializable{
     @Column(name="fecha_retorno")
     private Date fechaRetorno= new Date();
 
-    @JoinTable(name = "prestamo_ejemplar",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "codigo_ejemplar"))
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany()
     private List<Ejemplar> ejemplares;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Usuario Usuario;
 
 	public int getId() {
