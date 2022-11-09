@@ -3,6 +3,7 @@ package com.biblioteca.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.biblioteca.model.Autor;
 import com.biblioteca.model.Libro;
 
 @Repository
@@ -14,7 +15,7 @@ public interface LibroDao extends JpaRepository<Libro, Integer> {
 	
 	Libro findByFormato(String formato);
 	
-	Libro findByAutor(String autor);
+	//Libro findByAutor(Autor autor);
 	
 	Libro findByEditorial(String editorial);
 }

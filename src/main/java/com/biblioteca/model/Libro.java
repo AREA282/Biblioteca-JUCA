@@ -32,13 +32,15 @@ public class Libro implements Serializable {
     @Column(name="codigo_isbn")
     private int codigo;
     @Column(name="titulo")
-    private int titulo;
+    private String titulo;
     @Column(name="paginas")
     private int paginas;
     @Column(name="editorial")
-    private int editorial;
+    private String editorial;
     @Column(name="formato")
-    private int formato;
+    private String formato;
+    @Column(name="categoria")
+    private String categoria;
 
 
 
@@ -59,12 +61,12 @@ public class Libro implements Serializable {
 	}
 
 
-	public int getTitulo() {
+	public String getTitulo() {
 		return titulo;
 	}
 
 
-	public void setTitulo(int titulo) {
+	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 
@@ -79,22 +81,32 @@ public class Libro implements Serializable {
 	}
 
 
-	public int getEditorial() {
+	public String getEditorial() {
 		return editorial;
 	}
 
 
-	public void setEditorial(int editorial) {
+	public void setEditorial(String editorial) {
 		this.editorial = editorial;
 	}
 
 
-	public int getFormato() {
+	public String getFormato() {
 		return formato;
 	}
 
 
-	public void setFormato(int formato) {
+	public String getCategoria() {
+		return categoria;
+	}
+
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+
+	public void setFormato(String formato) {
 		this.formato = formato;
 	}
 
