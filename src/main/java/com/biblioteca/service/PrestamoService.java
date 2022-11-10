@@ -30,8 +30,16 @@ public class PrestamoService {
 	public String crearPrestamo(@RequestBody Prestamo prestamo) {
 		usuario = usuarioDao.findByCedula(prestamo.getUsuario().getCedula());
 		if(usuario.getEstadoUsario()==true) {
-			prestamoDao.save(prestamo);
-			return "Se registró el prestamo para el usuario " + usuario.getNombres();
+			if (usuario.getTipoUsario().equals("E") & prestamo.getEjemplares().size()<6) {
+				prestamoDao.save(prestamo);
+				return "Se registró el prestamo para el usuario " + usuario.getNombres();
+			}else if(usuario.getTipoUsario().equals("P") & prestamo.getEjemplares().size()<11){
+				prestamoDao.save(prestamo);
+				return "Se registró el prestamo para el usuario " + usuario.getNombres();
+			}else {
+				return "Excede la cantidad de libros posibles para el tipo de usuario";
+			}
+
 		}else {
 			return "El usuario no está habilitado para realizar prestamo";
 		}
