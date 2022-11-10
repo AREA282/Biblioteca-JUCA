@@ -69,7 +69,7 @@ public class Usuario implements Serializable {
 	public void setTipoUsario(String tipoUsario) {
 		this.tipoUsario = tipoUsario;
 	}
-	public boolean isEstadoUsario() {
+	public boolean getEstadoUsario() {
 		return estado;
 	}
 	public void setEstadoUsario(boolean estadoUsario) {

@@ -37,9 +37,9 @@ public class Prestamo implements Serializable{
     @Column(name="nota")
     private String nota;
     @Column(name="fecha_prestamo")
-    private Date fechaPrestamo = new Date();;
+    private Date fechaPrestamo = new Date();
     @Column(name="fecha_retorno")
-    private Date fechaRetorno= new Date();
+    private Date fechaRetorno;
 
     @ManyToMany()
     private List<Ejemplar> ejemplares;
