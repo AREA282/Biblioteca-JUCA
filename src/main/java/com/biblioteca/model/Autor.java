@@ -27,8 +27,10 @@ public class Autor {
     private String nombres;
     @Column(name="apellidos")
     private String apellidos;
-    @ManyToMany(mappedBy = "autores")
-    private List<Libro> libros;
+//    @ManyToMany(mappedBy = "autores")
+//    private List<Libro> libros;
+    
+    
 	public int getCedula_autor() {
 		return cedula;
 	}
@@ -47,12 +49,10 @@ public class Autor {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	public List<Libro> getLibros() {
-		return libros;
-	}
-	public void setLibros(List<Libro> libros) {
-		this.libros = libros;
-	}
+	/*
+	 * public List<Libro> getLibros() { return libros; } public void
+	 * setLibros(List<Libro> libros) { this.libros = libros; }
+	 */
     
     
 

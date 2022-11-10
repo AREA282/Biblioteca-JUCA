@@ -31,7 +31,7 @@ public class Ejemplar implements Serializable{
     private int codigo;
     @Column(name="edicion")
     private String edicion;
-    @ManyToOne(cascade = CascadeType.PERSIST, optional = false)//Si borro un ejemplar, no borra el libro con el cascade
+    @ManyToOne( optional = false)//Si borro un ejemplar, no borra el libro con el cascade
     @JoinColumn(name = "codigo_isbn_libro")
     private Libro libro;
 

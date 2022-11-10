@@ -44,7 +44,7 @@ public class Prestamo implements Serializable{
     @ManyToMany()
     private List<Ejemplar> ejemplares;
 
-    @ManyToOne(optional = false, cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false)
     private Usuario Usuario;
 
 	public int getId() {

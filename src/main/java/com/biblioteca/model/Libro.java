@@ -44,10 +44,10 @@ public class Libro implements Serializable {
 
 
 
-    @JoinTable(name = "libro_autor",
+    /*@JoinTable(name = "libro_autor",
             joinColumns = @JoinColumn(name = "codigo_isbn"),
-            inverseJoinColumns = @JoinColumn(name = "cedula_autor"))
-    @ManyToMany(cascade = CascadeType.ALL)
+            inverseJoinColumns = @JoinColumn(name = "cedula_autor"))*/
+	@ManyToMany(cascade = CascadeType.MERGE)
     private List<Autor> autores;
 
 
