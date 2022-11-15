@@ -34,7 +34,7 @@ public class LibroController {
 	}
 	
 	@GetMapping("consultar-categoria")
-	public Libro obtenerCategoria(@RequestParam String categoria){
+	public List<Libro> obtenerCategoria(@RequestParam String categoria){
 		return libroService.consultarCategoria(categoria);
 	}
 

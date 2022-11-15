@@ -15,7 +15,7 @@ public interface LibroDao extends JpaRepository<Libro, Integer> {
 	
 	Libro findByCodigo(int codigo);
 	
-	Libro findByCategoria(String categoria);
+	List<Libro> findByCategoria(String categoria);
 	
 	Libro findByFormato(String formato);
 

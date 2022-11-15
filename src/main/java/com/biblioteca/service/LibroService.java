@@ -26,8 +26,8 @@ public class LibroService {
 		return (Libro) libroDao.findByCodigo(codigo);
 	}
 	
-	public Libro consultarCategoria(@RequestParam String categoria) {
-		return (Libro) libroDao.findByCategoria(categoria);
+	public List<Libro> consultarCategoria(@RequestParam String categoria) {
+		return libroDao.findByCategoria(categoria);
 	}
 	
 	public Libro consultarFormato(@RequestParam String formato) {
