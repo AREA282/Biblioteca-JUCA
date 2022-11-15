@@ -2,8 +2,11 @@ package com.biblioteca.service;
 
 
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
+import com.biblioteca.helpers.ReturnDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +33,8 @@ public class PrestamoService {
 	
 	public String crearPrestamo(@RequestBody Prestamo prestamo) {
 		usuario = usuarioDao.findByCedula(prestamo.getUsuario().getCedula());
+		prestamo.setFechaRetorno((ReturnDate.returnDate()));//Se agrega la fecha de retorno en 8 días
+
 		if(usuario.getEstadoUsario()==true) {
 			if (usuario.getTipoUsario().equals("E") & prestamo.getEjemplares().size()<6) {
 				prestamoDao.save(prestamo);

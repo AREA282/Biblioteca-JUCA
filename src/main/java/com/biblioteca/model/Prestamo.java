@@ -44,6 +44,7 @@ public class Prestamo implements Serializable{
     @Column(name="fecha_retorno")
     private Date fechaRetorno;
 
+
     @ManyToMany()
     private List<Ejemplar> ejemplares;
 
