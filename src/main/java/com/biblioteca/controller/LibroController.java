@@ -2,6 +2,7 @@ package com.biblioteca.controller;
 
 import java.util.List;
 
+import com.biblioteca.model.Autor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +37,14 @@ public class LibroController {
 	public Libro obtenerCategoria(@RequestParam String categoria){
 		return libroService.consultarCategoria(categoria);
 	}
-	
+
+
+	@GetMapping("consultar-autor")
+	public List<Libro> obttenerLibroPorAutores(@RequestParam Integer autor_id){
+		return libroService.consultarPorAutor(autor_id);
+	}
+
+
 	@GetMapping("consultar-formato")
 	public Libro obtenerFormato(@RequestParam String formato){
 		return libroService.consultarFormato(formato);

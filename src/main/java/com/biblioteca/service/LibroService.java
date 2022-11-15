@@ -2,6 +2,7 @@ package com.biblioteca.service;
 
 import java.util.List;
 
+import com.biblioteca.model.Autor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,6 +52,10 @@ public class LibroService {
 		Libro libroModif = (Libro) libroDao.findByCodigo(codigo);
 		libroDao.save(libroModif);
 		return "El usuario " + libroModif.getTitulo() + " ha sido modificado con éxito";
+	}
+
+	public List<Libro> consultarPorAutor(@RequestParam Integer autor_id) {
+		return libroDao.findByAutores(autor_id);
 	}
 
 }
