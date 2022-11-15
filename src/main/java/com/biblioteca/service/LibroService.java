@@ -30,12 +30,12 @@ public class LibroService {
 		return libroDao.findByCategoria(categoria);
 	}
 	
-	public Libro consultarFormato(@RequestParam String formato) {
-		return (Libro) libroDao.findByFormato(formato);
+	public List<Libro> consultarFormato(@RequestParam String formato) {
+		return libroDao.findByFormato(formato);
 	}
 	
-	public Libro consultarEditorial(@RequestParam String editorial) {
-		return (Libro) libroDao.findByEditorial(editorial);
+	public List<Libro> consultarEditorial(@RequestParam String editorial) {
+		return libroDao.findByEditorial(editorial);
 	}
 	
 	public List<Libro> consultarTodosLibros(){

@@ -46,12 +46,12 @@ public class LibroController {
 
 
 	@GetMapping("consultar-formato")
-	public Libro obtenerFormato(@RequestParam String formato){
+	public List<Libro> obtenerFormato(@RequestParam String formato){
 		return libroService.consultarFormato(formato);
 	}
 	
 	@GetMapping("consultar-editorial")
-	public Libro obtenerEditorial(@RequestParam String editorial){
+	public List<Libro> obtenerEditorial(@RequestParam String editorial){
 		return libroService.consultarEditorial(editorial);
 	}
 	
