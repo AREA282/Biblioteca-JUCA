@@ -21,6 +21,7 @@ public class PrestamoService {
 	
 	@Autowired
 	private PrestamoDao prestamoDao;
+
 	
 	@Autowired
 	private UsuarioDao usuarioDao;
@@ -33,7 +34,7 @@ public class PrestamoService {
 			if (usuario.getTipoUsario().equals("E") & prestamo.getEjemplares().size()<6) {
 				prestamoDao.save(prestamo);
 				return "Se registró el prestamo para el usuario " + usuario.getNombres();
-			}else if(usuario.getTipoUsario().equals("P") & prestamo.getEjemplares().size()<11){
+			}else if(usuario.getTipoUsario().equals("P")){
 				prestamoDao.save(prestamo);
 				return "Se registró el prestamo para el usuario " + usuario.getNombres();
 			}else {
@@ -51,6 +52,18 @@ public class PrestamoService {
 	public List<Prestamo> consultarTodos(){
 		return prestamoDao.findAll();
 	}
+
+	public String devolverLibros(@RequestParam Integer id){
+		Prestamo prestamo = prestamoDao.getById(id);
+		Usuario usuario = usuarioDao.findByCedula(prestamo.getUsuario().getCedula());
+		prestamo.setEstado(true); //devueltos
+		prestamoDao.save(prestamo);
+		usuario.setEstadoUsario(true);//habilitado para nuevos prestamos
+		usuarioDao.save(usuario);
+		return "Se registró la devolución de los libros";
+	}
+
+
 	
 //	public Autor consultarAutor(@RequestParam int cedula) {
 //		return (Autor) prestamoDao.findByCedula(cedula);

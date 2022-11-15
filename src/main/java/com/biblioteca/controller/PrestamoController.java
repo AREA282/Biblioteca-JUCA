@@ -3,11 +3,7 @@ package com.biblioteca.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.biblioteca.model.Prestamo;
 import com.biblioteca.service.PrestamoService;
@@ -31,6 +27,12 @@ public class PrestamoController {
 	public List<Prestamo> consultarPrestamos() {
 		return prestamoService.consultarTodos();
 		
+	}
+
+	@GetMapping("devolver")
+	public String devolverPrestamo(@RequestParam Integer id) {
+		return prestamoService.devolverLibros(id);
+
 	}
 
 }

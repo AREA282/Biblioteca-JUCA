@@ -36,6 +36,9 @@ public class Prestamo implements Serializable{
     private int id;
     @Column(name="nota")
     private String nota;
+
+	@Column(name="estado")
+	private boolean estado = false;
     @Column(name="fecha_prestamo")
     private Date fechaPrestamo = new Date();
     @Column(name="fecha_retorno")
@@ -97,6 +100,14 @@ public class Prestamo implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
 	}
     
     
