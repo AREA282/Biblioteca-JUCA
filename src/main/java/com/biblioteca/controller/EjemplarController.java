@@ -17,31 +17,31 @@ import com.biblioteca.service.EjemplarService;
 @RestController
 @RequestMapping("api/biblioteca/ejemplar")
 public class EjemplarController {
-	
+
 	@Autowired
 	private EjemplarService ejemplarService;
-	
+
 	@GetMapping("consultar-ejemplar")
-	public Ejemplar obtenerEjemplar(@RequestParam int codigo){
+	public Ejemplar obtenerEjemplar(@RequestParam int codigo) {
 		return ejemplarService.consultarEjemplar(codigo);
 	}
-	
+
 	@GetMapping("consultar-ejemplares")
-	public List<Ejemplar> obtenerEjemplares(){
+	public List < Ejemplar > obtenerEjemplares() {
 		return ejemplarService.consultarTodos();
 	}
-	
+
 	@PostMapping("crear")
 	public String crearEjemplar(@RequestBody Ejemplar ejemplar) {
 		return ejemplarService.crearEjemplar(ejemplar);
 	}
-	
+
 	@DeleteMapping("eliminar")
 	public String eliminarEjemplar(@RequestParam int codigo) {
 		return ejemplarService.eliminarEjemplar(codigo);
-		
+
 	}
-	
+
 	@PutMapping("modificar")
 	public String modificarEjemplar(@RequestBody int codigo) {
 		return ejemplarService.modificarEjemplar(codigo);

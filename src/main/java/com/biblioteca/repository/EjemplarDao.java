@@ -9,11 +9,11 @@ import org.springframework.stereotype.Repository;
 import com.biblioteca.model.Ejemplar;
 
 @Repository
-public interface EjemplarDao extends JpaRepository<Ejemplar, Integer>{
-	
-	Ejemplar findByCodigo(int codigo); 
-	
+public interface EjemplarDao extends JpaRepository < Ejemplar, Integer > {
+
+	Ejemplar findByCodigo(int codigo);
+
 	@Query(value = "select * from ejemplar where codigo_isbn = ?", nativeQuery = true)
-	List<Ejemplar> fidnByCodigo_isbn(int codigo_isbn);
+	List < Ejemplar > fidnByCodigo_isbn(int codigo_isbn);
 
 }

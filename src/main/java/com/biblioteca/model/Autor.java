@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,20 +16,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="autor")
+@Table(name = "autor")
 public class Autor {
 
-    @Id
-    @Column(name="cedula_autor")
-    private int cedula;
-    @Column(name="nombres")
-    private String nombres;
-    @Column(name="apellidos")
-    private String apellidos;
-//    @ManyToMany(mappedBy = "autores")
-//    private List<Libro> libros;
-    
-    
+	@Id
+	@Column(name = "cedula_autor")
+	private int cedula;
+	@Column(name = "nombres")
+	private String nombres;
+	@Column(name = "apellidos")
+	private String apellidos;
+	//    @ManyToMany(mappedBy = "autores")
+	//    private List<Libro> libros;
+
 	public int getCedula_autor() {
 		return cedula;
 	}
@@ -53,9 +51,5 @@ public class Autor {
 	 * public List<Libro> getLibros() { return libros; } public void
 	 * setLibros(List<Libro> libros) { this.libros = libros; }
 	 */
-    
-    
-
-
 
 }

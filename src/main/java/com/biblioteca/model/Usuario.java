@@ -12,27 +12,27 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="usuario")
+@Table(name = "usuario")
 public class Usuario implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id 
-    @Column(name="cedula")
-    private String cedula;
-    @Column(name="nombres")
-    private String nombres;
-    @Column (name="apellidos")
-    private String apellidos;
-    @Column(name="direccion")
-    private String direccion;
-    @Column (name="telefono")
-    private String telefono;
-    @Column (name="tipo_usuario")
-    private String tipoUsario;
-    @Column (name="estado_usuario")
-    private boolean estado;
-    
+	@Id
+	@Column(name = "cedula")
+	private String cedula;
+	@Column(name = "nombres")
+	private String nombres;
+	@Column(name = "apellidos")
+	private String apellidos;
+	@Column(name = "direccion")
+	private String direccion;
+	@Column(name = "telefono")
+	private String telefono;
+	@Column(name = "tipo_usuario")
+	private String tipoUsario;
+	@Column(name = "estado_usuario")
+	private boolean estado;
+
 	public String getCedula() {
 		return cedula;
 	}
@@ -78,10 +78,5 @@ public class Usuario implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-    
-	
-
-    
-
 
 }

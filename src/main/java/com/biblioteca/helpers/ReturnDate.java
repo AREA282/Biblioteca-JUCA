@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ReturnDate {
 
-    public static Date returnDate(){
+    public static Date returnDate() {
         Date date = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
@@ -17,10 +17,10 @@ public class ReturnDate {
         return date;
     }
 
-    public static List<String> returnDates(int month, int year){
-        List<String> fechas = new ArrayList<String>();
-        String first = year+"-"+month+"-01 00:00:00";
-        String second = year+"-"+month+"-30 23:59:59";
+    public static List < String > returnDates(int month, int year) {
+        List < String > fechas = new ArrayList < String > ();
+        String first = year + "-" + month + "-01 00:00:00";
+        String second = year + "-" + month + "-30 23:59:59";
         fechas.add(first);
         fechas.add(second);
         return fechas;

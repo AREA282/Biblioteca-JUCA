@@ -18,31 +18,31 @@ import com.biblioteca.service.UsuarioService;
 @RestController
 @RequestMapping("api/biblioteca/usuario")
 public class UsuarioController {
-	
+
 	@Autowired
 	private UsuarioService usuarioService;
-	
+
 	@GetMapping("consultar-usuario")
-	public Usuario obtenerUsuario(@RequestParam String cedula){
+	public Usuario obtenerUsuario(@RequestParam String cedula) {
 		return usuarioService.consultarUsuario(cedula);
 	}
-	
+
 	@GetMapping("consultar-usuarios")
-	public List<Usuario> obtenerUsuarios(){
+	public List < Usuario > obtenerUsuarios() {
 		return usuarioService.consultarTodos();
 	}
-	
+
 	@PostMapping("crear")
 	public String crearUsuario(@RequestBody Usuario usuario) {
 		return usuarioService.crearUsuario(usuario);
 	}
-	
+
 	@DeleteMapping("eliminar")
 	public String eliminarUsuario(@RequestParam String cedula) {
 		return usuarioService.eliminarUsuario(cedula);
-		
+
 	}
-	
+
 	@PutMapping("modificar")
 	public String modificarUsuario(@RequestBody String cedula) {
 		return usuarioService.modificarUsuario(cedula);

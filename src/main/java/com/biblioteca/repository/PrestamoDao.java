@@ -12,11 +12,11 @@ import org.springframework.stereotype.Repository;
 import com.biblioteca.model.Prestamo;
 
 @Repository
-public interface PrestamoDao extends JpaRepository<Prestamo, Integer>{
-	
+public interface PrestamoDao extends JpaRepository < Prestamo, Integer > {
+
 	Prestamo findByFechaPrestamo(Date fechaPrestamo);
 
 	@Query(nativeQuery = true, value = "select * from prestamo where fecha_prestamo BETWEEN :first AND :second and usuario_cedula = :cedula")
-	List<Prestamo> findByUserAndDate(String first,String second, String cedula);
+	List < Prestamo > findByUserAndDate(String first, String second, String cedula);
 
 }

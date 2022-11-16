@@ -21,20 +21,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="ejemplar")
-public class Ejemplar implements Serializable{
+@Table(name = "ejemplar")
+public class Ejemplar implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @Column(name="codigo_ejemplar")
-    private int codigo;
-    @Column(name="edicion")
-    private String edicion;
-    @ManyToOne( optional = false)//Si borro un ejemplar, no borra el libro con el cascade
-    @JoinColumn(name = "codigo_isbn_libro")
-    private Libro libro;
-
+	@Id
+	@Column(name = "codigo_ejemplar")
+	private int codigo;
+	@Column(name = "edicion")
+	private String edicion;
+	@ManyToOne(optional = false) //Si borro un ejemplar, no borra el libro con el cascade
+	@JoinColumn(name = "codigo_isbn_libro")
+	private Libro libro;
 
 	public Libro getLibro() {
 		return libro;
@@ -60,12 +59,8 @@ public class Ejemplar implements Serializable{
 		this.edicion = edicion;
 	}
 
-
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-    
-    
 
 }

@@ -26,30 +26,29 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="prestamo")
-public class Prestamo implements Serializable{
+@Table(name = "prestamo")
+public class Prestamo implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
-    @Column(name="nota")
-    private String nota;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@Column(name = "nota")
+	private String nota;
 
-	@Column(name="estado")
+	@Column(name = "estado")
 	private boolean estado = false;
-    @Column(name="fecha_prestamo")
-    private Date fechaPrestamo = new Date();
-    @Column(name="fecha_retorno")
-    private Date fechaRetorno;
+	@Column(name = "fecha_prestamo")
+	private Date fechaPrestamo = new Date();
+	@Column(name = "fecha_retorno")
+	private Date fechaRetorno;
 
+	@ManyToMany()
+	private List < Ejemplar > ejemplares;
 
-    @ManyToMany()
-    private List<Ejemplar> ejemplares;
-
-    @ManyToOne(optional = false)
-    private Usuario Usuario;
+	@ManyToOne(optional = false)
+	private Usuario Usuario;
 
 	public int getId() {
 		return id;
@@ -83,11 +82,11 @@ public class Prestamo implements Serializable{
 		this.fechaRetorno = fecha_retorno;
 	}
 
-	public List<Ejemplar> getEjemplares() {
+	public List < Ejemplar > getEjemplares() {
 		return ejemplares;
 	}
 
-	public void setEjemplares(List<Ejemplar> ejemplares) {
+	public void setEjemplares(List < Ejemplar > ejemplares) {
 		this.ejemplares = ejemplares;
 	}
 
@@ -110,6 +109,5 @@ public class Prestamo implements Serializable{
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
-    
-    
+
 }
