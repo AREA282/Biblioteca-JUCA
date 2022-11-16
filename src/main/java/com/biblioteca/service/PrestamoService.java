@@ -58,6 +58,11 @@ public class PrestamoService {
 		return prestamoDao.findAll();
 	}
 
+	public List<Prestamo> consultarPrestamoUsuarioFecha(@RequestParam Integer month, @RequestParam Integer year, @RequestParam String cedula){
+		List<String> fechas= ReturnDate.returnDates(month, year);
+		return prestamoDao.findByUserAndDate(fechas.get(0), fechas.get(1), cedula);
+	}
+
 	public String devolverLibros(@RequestParam Integer id){
 		Prestamo prestamo = prestamoDao.getById(id);
 		Usuario usuario = usuarioDao.findByCedula(prestamo.getUsuario().getCedula());

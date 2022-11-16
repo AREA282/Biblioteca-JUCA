@@ -35,4 +35,10 @@ public class PrestamoController {
 
 	}
 
+	@GetMapping("usuario-fecha")
+	public List<Prestamo> devolverPrestamo(@RequestParam Integer month, @RequestParam Integer year, @RequestParam String cedula) {
+
+		return prestamoService.consultarPrestamoUsuarioFecha(month, year, cedula);
+	}
+
 }
