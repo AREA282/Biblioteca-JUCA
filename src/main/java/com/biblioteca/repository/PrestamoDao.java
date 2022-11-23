@@ -19,4 +19,7 @@ public interface PrestamoDao extends JpaRepository < Prestamo, Integer > {
 	@Query(nativeQuery = true, value = "select * from prestamo where fecha_prestamo BETWEEN :first AND :second and usuario_cedula = :cedula")
 	List < Prestamo > findByUserAndDate(String first, String second, String cedula);
 
+	@Query(nativeQuery = true, value = "select * from prestamo where fecha_retorno < curdate() and estado = 0 and penalizado =0")
+	List < Prestamo > findByVencidos();
+
 }

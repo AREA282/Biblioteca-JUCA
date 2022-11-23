@@ -39,16 +39,27 @@ public class Prestamo implements Serializable {
 
 	@Column(name = "estado")
 	private boolean estado = false;
+
+	@Column(name = "penalizado")
+	private boolean penalizado = false;
 	@Column(name = "fecha_prestamo")
 	private Date fechaPrestamo = new Date();
 	@Column(name = "fecha_retorno")
 	private Date fechaRetorno;
 
-	@ManyToMany()
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List < Ejemplar > ejemplares;
 
 	@ManyToOne(optional = false)
 	private Usuario Usuario;
+
+	public boolean isPenalizado() {
+		return penalizado;
+	}
+
+	public void setPenalizado(boolean penalizado) {
+		this.penalizado = penalizado;
+	}
 
 	public int getId() {
 		return id;

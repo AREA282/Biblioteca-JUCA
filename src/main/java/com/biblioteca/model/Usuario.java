@@ -1,5 +1,6 @@
 package com.biblioteca.model;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -32,6 +33,18 @@ public class Usuario implements Serializable {
 	private String tipoUsario;
 	@Column(name = "estado_usuario")
 	private boolean estado;
+
+	@Column(name = "fechaFinalizacion", nullable = true)
+	private Date fechaPenalizacion;
+
+
+	public Date getFechaPenalizacion() {
+		return fechaPenalizacion;
+	}
+
+	public void setFechaPenalizacion(Date fechaPenalizacion) {
+		this.fechaPenalizacion = fechaPenalizacion;
+	}
 
 	public String getCedula() {
 		return cedula;

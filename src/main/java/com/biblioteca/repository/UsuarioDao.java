@@ -5,11 +5,13 @@ import org.springframework.stereotype.Repository;
 
 import com.biblioteca.model.Usuario;
 
+import java.util.List;
+
 @Repository
 public interface UsuarioDao extends JpaRepository < Usuario, String > {
 
 	Usuario findByCedula(String cedula);
 
-	Usuario findByEstado(boolean estado);
+	List<Usuario> findByEstado(boolean estado);
 
 }

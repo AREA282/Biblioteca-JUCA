@@ -17,6 +17,14 @@ public class ReturnDate {
         return date;
     }
 
+    public static Date addDays(int days, Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, days);
+        date = cal.getTime();
+        return date;
+    }
+
     public static List < String > returnDates(int month, int year) {
         List < String > fechas = new ArrayList < String > ();
         String first = year + "-" + month + "-01 00:00:00";
