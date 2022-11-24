@@ -3,6 +3,7 @@ package com.biblioteca.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,29 +23,25 @@ public class EjemplarController {
 	private EjemplarService ejemplarService;
 
 	@GetMapping("consultar-ejemplar")
-	public Ejemplar obtenerEjemplar(@RequestParam int codigo) {
+	public ResponseEntity <Object> obtenerEjemplar(@RequestParam int codigo) {
 		return ejemplarService.consultarEjemplar(codigo);
 	}
 
 	@GetMapping("consultar-ejemplares")
-	public List < Ejemplar > obtenerEjemplares() {
+	public ResponseEntity <Object> obtenerEjemplares() {
 		return ejemplarService.consultarTodos();
 	}
 
 	@PostMapping("crear")
-	public String crearEjemplar(@RequestBody Ejemplar ejemplar) {
+	public ResponseEntity<Object> crearEjemplar(@RequestBody Ejemplar ejemplar) {
 		return ejemplarService.crearEjemplar(ejemplar);
 	}
 
 	@DeleteMapping("eliminar")
-	public String eliminarEjemplar(@RequestParam int codigo) {
+	public ResponseEntity <Object> eliminarEjemplar(@RequestParam int codigo) {
 		return ejemplarService.eliminarEjemplar(codigo);
 
 	}
 
-	@PutMapping("modificar")
-	public String modificarEjemplar(@RequestBody int codigo) {
-		return ejemplarService.modificarEjemplar(codigo);
-	}
 
 }

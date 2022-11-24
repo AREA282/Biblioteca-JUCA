@@ -3,6 +3,7 @@ package com.biblioteca.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,29 +23,25 @@ public class AutorController {
 	private AutorService autorService;
 
 	@GetMapping("consultar-autor")
-	public Autor obtenerAutor(@RequestParam int cedula) {
+	public ResponseEntity <Object> obtenerAutor(@RequestParam int cedula) {
 		return autorService.consultarAutor(cedula);
 	}
 
 	@GetMapping("consultar-autores")
-	public List < Autor > obtenerAutores() {
+	public ResponseEntity <Object> obtenerAutores() {
 		return autorService.consultarTodos();
 	}
 
 	@PostMapping("crear")
-	public String crearAutor(@RequestBody Autor autor) {
+	public ResponseEntity<Object> crearAutor(@RequestBody Autor autor) {
 		return autorService.crearAutor(autor);
 	}
 
 	@DeleteMapping("eliminar")
-	public String eliminarAutor(@RequestParam int cedula) {
+	public ResponseEntity <Object> eliminarAutor(@RequestParam int cedula) {
 		return autorService.eliminarAutor(cedula);
 
 	}
 
-	@PutMapping("modificar")
-	public String modificarAutor(@RequestBody int cedula) {
-		return autorService.modificarAutor(cedula);
-	}
 
 }

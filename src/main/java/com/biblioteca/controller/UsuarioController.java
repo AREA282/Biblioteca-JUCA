@@ -3,6 +3,7 @@ package com.biblioteca.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,29 +24,24 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 
 	@GetMapping("consultar-usuario")
-	public Usuario obtenerUsuario(@RequestParam String cedula) {
+	public ResponseEntity<Object> obtenerUsuario(@RequestParam String cedula) {
 		return usuarioService.consultarUsuario(cedula);
 	}
 
 	@GetMapping("consultar-usuarios")
-	public List < Usuario > obtenerUsuarios() {
+	public ResponseEntity<Object> obtenerUsuarios() {
 		return usuarioService.consultarTodos();
 	}
 
 	@PostMapping("crear")
-	public String crearUsuario(@RequestBody Usuario usuario) {
+	public ResponseEntity<Object> crearUsuario(@RequestBody Usuario usuario) {
 		return usuarioService.crearUsuario(usuario);
 	}
 
 	@DeleteMapping("eliminar")
-	public String eliminarUsuario(@RequestParam String cedula) {
+	public ResponseEntity<Object> eliminarUsuario(@RequestParam String cedula) {
 		return usuarioService.eliminarUsuario(cedula);
 
-	}
-
-	@PutMapping("modificar")
-	public String modificarUsuario(@RequestBody String cedula) {
-		return usuarioService.modificarUsuario(cedula);
 	}
 
 }

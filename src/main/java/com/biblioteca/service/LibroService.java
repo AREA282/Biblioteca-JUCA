@@ -3,7 +3,11 @@ package com.biblioteca.service;
 import java.util.List;
 
 import com.biblioteca.model.Autor;
+import com.biblioteca.response.RespuestaPersonalizada;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,45 +21,163 @@ public class LibroService {
 	@Autowired
 	private LibroDao libroDao;
 
-	public String crearLibro(@RequestBody Libro libro) {
-		libroDao.save(libro);
-		return "El libro fue creado con éxito";
+	private static final Logger logger = Logger.getLogger(AutorService.class);
+	public ResponseEntity <Object> crearLibro(@RequestBody Libro libro) {
+
+		ResponseEntity<Object> respuesta;
+		try {
+			RespuestaPersonalizada res = new RespuestaPersonalizada("Se creó el libro con exito", HttpStatus.OK);
+			res.setObjetoRespuesta(libroDao.save(libro));
+			respuesta = ResponseEntity.ok(HttpStatus.OK);
+			respuesta = new ResponseEntity<>(res, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error(e);
+			respuesta = ResponseEntity.ok(HttpStatus.BAD_REQUEST);
+			respuesta = new ResponseEntity<>("Disculpa tenemos un error tratando de crear el libro",
+					HttpStatus.BAD_REQUEST);
+
+		}
+		return respuesta;
+
 	}
 
-	public Libro consultarLibro(@RequestParam int codigo) {
-		return (Libro) libroDao.findByCodigo(codigo);
+	public ResponseEntity <Object> consultarLibro(@RequestParam int codigo) {
+		ResponseEntity<Object> respuesta;
+		try {
+			Libro libro = libroDao.findByCodigo(codigo);
+			RespuestaPersonalizada res = new RespuestaPersonalizada("Consulta del libro con éxito",
+					HttpStatus.OK);
+			res.setObjetoRespuesta(libro);
+			respuesta = new ResponseEntity<>(res, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error(e);
+			respuesta = ResponseEntity.ok(HttpStatus.BAD_REQUEST);
+			respuesta = new ResponseEntity<>("Disculpa tenemos un error tratando de consultar el libro",
+					HttpStatus.BAD_REQUEST);
+
+		}
+		return respuesta;
 	}
 
-	public List < Libro > consultarCategoria(@RequestParam String categoria) {
-		return libroDao.findByCategoria(categoria);
+	public ResponseEntity<Object> consultarCategoria(@RequestParam String categoria) {
+
+
+		ResponseEntity<Object> respuesta;
+		try {
+			List<Libro> libros =(List) libroDao.findByCategoria(categoria);
+			RespuestaPersonalizada res = new RespuestaPersonalizada("Consulta de los libros con exito",
+					HttpStatus.OK);
+			res.setObjetoRespuesta(libros);
+			respuesta = ResponseEntity.ok(HttpStatus.OK);
+			respuesta = new ResponseEntity<>(res, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error(e);
+			respuesta = ResponseEntity.ok(HttpStatus.BAD_REQUEST);
+			respuesta = new ResponseEntity<>("Disculpa tenemos un error tratando de consultar los libros",
+					HttpStatus.BAD_REQUEST);
+
+		}
+		return respuesta;
 	}
 
-	public List < Libro > consultarFormato(@RequestParam String formato) {
-		return libroDao.findByFormato(formato);
+	public ResponseEntity<Object> consultarFormato(@RequestParam String formato) {
+
+
+		ResponseEntity<Object> respuesta;
+		try {
+			List<Libro> libros =(List) libroDao.findByFormato(formato);
+			RespuestaPersonalizada res = new RespuestaPersonalizada("Consulta de los libros con exito",
+					HttpStatus.OK);
+			res.setObjetoRespuesta(libros);
+			respuesta = ResponseEntity.ok(HttpStatus.OK);
+			respuesta = new ResponseEntity<>(res, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error(e);
+			respuesta = ResponseEntity.ok(HttpStatus.BAD_REQUEST);
+			respuesta = new ResponseEntity<>("Disculpa tenemos un error tratando de consultar los libros",
+					HttpStatus.BAD_REQUEST);
+
+		}
+		return respuesta;
 	}
 
-	public List < Libro > consultarEditorial(@RequestParam String editorial) {
-		return libroDao.findByEditorial(editorial);
+	public ResponseEntity<Object> consultarEditorial(@RequestParam String editorial) {
+
+		ResponseEntity<Object> respuesta;
+		try {
+			List<Libro> libros =(List) libroDao.findByEditorial(editorial);
+			RespuestaPersonalizada res = new RespuestaPersonalizada("Consulta de los libros con exito",
+					HttpStatus.OK);
+			res.setObjetoRespuesta(libros);
+			respuesta = ResponseEntity.ok(HttpStatus.OK);
+			respuesta = new ResponseEntity<>(res, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error(e);
+			respuesta = ResponseEntity.ok(HttpStatus.BAD_REQUEST);
+			respuesta = new ResponseEntity<>("Disculpa tenemos un error tratando de consultar los libros",
+					HttpStatus.BAD_REQUEST);
+
+		}
+		return respuesta;
+
 	}
 
-	public List < Libro > consultarTodosLibros() {
-		return libroDao.findAll();
+	public ResponseEntity<Object> consultarTodosLibros() {
+			ResponseEntity<Object> respuesta;
+		try {
+			List<Libro> libros =(List) libroDao.findAll();
+			RespuestaPersonalizada res = new RespuestaPersonalizada("Consulta de los libros con exito",
+					HttpStatus.OK);
+			res.setObjetoRespuesta(libros);
+			respuesta = ResponseEntity.ok(HttpStatus.OK);
+			respuesta = new ResponseEntity<>(res, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error(e);
+			respuesta = ResponseEntity.ok(HttpStatus.BAD_REQUEST);
+			respuesta = new ResponseEntity<>("Disculpa tenemos un error tratando de consultar los libros",
+					HttpStatus.BAD_REQUEST);
+
+		}
+		return respuesta;
 	}
 
-	public String eliminarLibro(@RequestParam int codigo) {
-		Libro libro = (Libro) libroDao.findByCodigo(codigo);
-		libroDao.delete(libro);
-		return "El libro ha sido eliminado";
+
+	public ResponseEntity<Object> eliminarLibro(@RequestParam int codigo) {
+
+		ResponseEntity<Object> respuesta;
+		try {
+			RespuestaPersonalizada res = new RespuestaPersonalizada("El libro fue eliminado correctamente", HttpStatus.OK);
+			Libro libroEliminado = libroDao.findByCodigo(codigo);
+			libroDao.delete(libroEliminado);
+			respuesta = new ResponseEntity<>(res, HttpStatus.OK);
+		} catch (Exception e) {
+			RespuestaPersonalizada res = new RespuestaPersonalizada("Error al eliminar el libro ", HttpStatus.BAD_REQUEST);
+			respuesta = new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
+		}
+
+		return respuesta;
+
+
 	}
 
-	public String modificarLibro(@RequestBody int codigo) {
-		Libro libroModif = (Libro) libroDao.findByCodigo(codigo);
-		libroDao.save(libroModif);
-		return "El usuario " + libroModif.getTitulo() + " ha sido modificado con éxito";
-	}
+	public ResponseEntity<Object> consultarPorAutor(@RequestParam Integer autor_id) {
 
-	public List < Libro > consultarPorAutor(@RequestParam Integer autor_id) {
-		return libroDao.findByAutores(autor_id);
+		ResponseEntity<Object> respuesta;
+		try {
+			List<Libro> libros =(List) libroDao.findByAutores(autor_id);
+			RespuestaPersonalizada res = new RespuestaPersonalizada("Consulta de los libros con exito",
+					HttpStatus.OK);
+			res.setObjetoRespuesta(libros);
+			respuesta = ResponseEntity.ok(HttpStatus.OK);
+			respuesta = new ResponseEntity<>(res, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error(e);
+			respuesta = ResponseEntity.ok(HttpStatus.BAD_REQUEST);
+			respuesta = new ResponseEntity<>("Disculpa tenemos un error tratando de consultar los libros",
+					HttpStatus.BAD_REQUEST);
+
+		}
+		return respuesta;
 	}
 
 }

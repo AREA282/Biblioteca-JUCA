@@ -21,7 +21,7 @@ public class ScheduleService {
     @Autowired
     private UsuarioDao usuarioDao;
 
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 55000)
     public void penalizarUsuarios(){
 
 
@@ -51,7 +51,7 @@ public class ScheduleService {
         }
     }
 
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 55000)
     public void despenalizarUsuarios(){
         List<Usuario> usuarios = usuarioDao.findByEstado(false);
 
